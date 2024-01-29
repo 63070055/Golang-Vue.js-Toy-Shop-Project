@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    container_name: golang_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=XXVebw51
+      - MYSQL_DATABASE=toyshop
+      - MYSQL_PASSWORD=XXVebw51
+    ports:
+      - "3306:3306"
